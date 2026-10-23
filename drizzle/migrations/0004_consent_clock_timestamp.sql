@@ -1,0 +1,1 @@
+ALTER TABLE public.consent_records ALTER COLUMN recorded_at SET DEFAULT clock_timestamp();

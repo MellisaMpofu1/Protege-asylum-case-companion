@@ -1,0 +1,155 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --radius-4xl: calc(var(--radius) + 16px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-ring-offset-background: var(--background);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-overlay: var(--overlay);
+}
+
+@theme {
+  --font-head: "Outfit", system-ui, sans-serif;
+  --font-body: "Atkinson Hyperlegible", system-ui, sans-serif;
+  --color-violet: var(--violet);
+  --color-pink: var(--pink);
+  --color-lavender: var(--lavender);
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-applied: var(--applied);
+  --color-neutral-status: var(--neutral-status);
+}
+
+:root {
+  --radius: 0.75rem;
+  --overlay: oklch(0.15 0.02 300 / 0.65);
+  --background: #f8f5fd;
+  --foreground: #29163e;
+  --card: #ffffff;
+  --card-foreground: #29163e;
+  --popover: #ffffff;
+  --popover-foreground: #29163e;
+  --primary: #3c156b;
+  --primary-foreground: #ffffff;
+  --secondary: #eae0fc;
+  --secondary-foreground: #3c156b;
+  --muted: #f1ebfb;
+  --muted-foreground: #66587b;
+  --accent: #eae0fc;
+  --accent-foreground: #3c156b;
+  --destructive: #a3123a;
+  --destructive-foreground: #ffffff;
+  --border: #e3d8f3;
+  --input: #d6c8ec;
+  --ring: #773bb3;
+  --violet: #773bb3;
+  --pink: #c50b7a;
+  --lavender: #eae0fc;
+  --success: #1d6b46;
+  --warning: #8a4b00;
+  --applied: #1d4ed8;
+  --neutral-status: #5b5866;
+  --chart-1: #3c156b;
+  --chart-2: #773bb3;
+  --chart-3: #c50b7a;
+  --chart-4: #b79be0;
+  --chart-5: #716386;
+  --sidebar: #ffffff;
+  --sidebar-foreground: #29163e;
+  --sidebar-primary: #3c156b;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #eae0fc;
+  --sidebar-accent-foreground: #3c156b;
+  --sidebar-border: #e3d8f3;
+  --sidebar-ring: #773bb3;
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-body);
+    line-height: 1.55;
+  }
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-head);
+    letter-spacing: 0;
+  }
+  :focus-visible {
+    outline: 3px solid var(--ring);
+    outline-offset: 2px;
+  }
+}
+
+html { scrollbar-gutter: stable; }
+body { min-width: 0; }
+.protege-content { overflow-wrap: anywhere; }
+.protege-content :where(form, form > *, .grid > *, dl, ul, li) { min-width: 0; }
+.protege-content :where(input, select, textarea) { max-width: 100%; scroll-margin-block: 6rem; }
+.protege-content select { text-overflow: ellipsis; }
+.protege-content :where(svg) { flex-shrink: 0; }
+.protege-dialog {
+  top: calc(var(--visual-top, 0px) + var(--visual-height, 100dvh) / 2);
+  max-height: calc(var(--visual-height, 100dvh) - 2rem);
+  overflow-wrap: anywhere;
+}
+.protege-dialog :where(form, form > *, input, textarea, select) { min-width: 0; max-width: 100%; }
+.protege-dialog input, .protege-dialog textarea { scroll-margin-block: 4rem; }
+.protege-navigation { left: 1rem; width: min(20rem, calc(100% - 2rem)); translate: 0 -50%; }
+.protege-table { overscroll-behavior-inline: contain; }
+.protege-content [role="tablist"] { flex-wrap: nowrap; height: auto; max-width: 100%; overflow-x: auto; justify-content: flex-start; overscroll-behavior-inline: contain; }
+.protege-content [role="tab"] { flex-shrink: 0; white-space: nowrap; }
+@media (max-width: 639px) {
+  button:not([role="checkbox"]):not([role="switch"]), [role="button"] { min-height: 44px; max-width: 100%; white-space: normal; height: auto; }
+  label:has([role="checkbox"]), label:has([role="switch"]) { min-height: 44px; }
+  input:not([type="checkbox"]):not([type="radio"]), select, textarea { min-height: 44px; font-size: 16px; }
+  .protege-content a:not(:has(svg)):not(.underline) { overflow-wrap: anywhere; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}
